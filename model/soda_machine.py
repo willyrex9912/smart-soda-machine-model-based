@@ -21,8 +21,6 @@ class SodaMachine:
     def update_state(self, perception: PerceptionEnum) -> StateEnum:
         if self.state is None and self.action is None and perception is None:
             return StateEnum.WITHOUT_COIN
-        elif self.state == StateEnum.WITHOUT_COIN and self.action == ActionEnum.ASK_COIN and perception == PerceptionEnum.COIN:
-            return StateEnum.COIN_RECEIVED
         elif self.state == StateEnum.COIN_RECEIVED and self.action == ActionEnum.ASK_SODA_CODE and perception == PerceptionEnum.C1:
             return StateEnum.C1_SERVED
         elif self.state == StateEnum.COIN_RECEIVED and self.action == ActionEnum.ASK_SODA_CODE and perception == PerceptionEnum.C2:
@@ -30,6 +28,8 @@ class SodaMachine:
         elif self.state == StateEnum.COIN_RECEIVED and self.action == ActionEnum.ASK_SODA_CODE and perception == PerceptionEnum.C3:
             return StateEnum.C3_SERVED
         elif self.state == StateEnum.COIN_RECEIVED and self.action == ActionEnum.ASK_SODA_CODE and perception == PerceptionEnum.COIN:
+            return StateEnum.COIN_RECEIVED
+        elif perception == PerceptionEnum.COIN:
             return StateEnum.COIN_RECEIVED
         else:
             return StateEnum.WITHOUT_COIN
