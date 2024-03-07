@@ -72,9 +72,11 @@ class SodaMachine:
         print("Last Executed Action -> " + str(self.action))
 
     def ask_coin(self):
+        print("Please insert a coin!")
         self.ask_and_wait_perception()
 
     def ask_soda_code(self):
+        print("Please choose a soda!")
         self.ask_and_wait_perception()
 
     def serve_c1(self):
