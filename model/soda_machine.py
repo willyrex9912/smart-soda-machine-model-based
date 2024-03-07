@@ -21,15 +21,15 @@ class SodaMachine:
     def update_state(self, perception: PerceptionEnum) -> StateEnum:
         if self.state is None and self.action is None and perception is None:
             return StateEnum.WITHOUT_COIN
-        if self.state == StateEnum.WITHOUT_COIN and self.action == ActionEnum.ASK_COIN and perception == PerceptionEnum.COIN:
+        elif self.state == StateEnum.WITHOUT_COIN and self.action == ActionEnum.ASK_COIN and perception == PerceptionEnum.COIN:
             return StateEnum.COIN_RECEIVED
-        if self.state == StateEnum.COIN_RECEIVED and self.action == ActionEnum.ASK_SODA_CODE and perception == PerceptionEnum.C1:
+        elif self.state == StateEnum.COIN_RECEIVED and self.action == ActionEnum.ASK_SODA_CODE and perception == PerceptionEnum.C1:
             return StateEnum.C1_SERVED
-        if self.state == StateEnum.COIN_RECEIVED and self.action == ActionEnum.ASK_SODA_CODE and perception == PerceptionEnum.C2:
+        elif self.state == StateEnum.COIN_RECEIVED and self.action == ActionEnum.ASK_SODA_CODE and perception == PerceptionEnum.C2:
             return StateEnum.C2_SERVED
-        if self.state == StateEnum.COIN_RECEIVED and self.action == ActionEnum.ASK_SODA_CODE and perception == PerceptionEnum.C3:
+        elif self.state == StateEnum.COIN_RECEIVED and self.action == ActionEnum.ASK_SODA_CODE and perception == PerceptionEnum.C3:
             return StateEnum.C3_SERVED
-        if self.state == StateEnum.COIN_RECEIVED and self.action == ActionEnum.ASK_SODA_CODE and perception == PerceptionEnum.COIN:
+        elif self.state == StateEnum.COIN_RECEIVED and self.action == ActionEnum.ASK_SODA_CODE and perception == PerceptionEnum.COIN:
             return StateEnum.COIN_RECEIVED
         else:
             return StateEnum.WITHOUT_COIN
@@ -84,22 +84,15 @@ class SodaMachine:
         time.sleep(3)
         print("Soda 1 served!")
         time.sleep(2)
-        self.reset()
 
     def serve_c2(self):
         print("Serving soda 2")
         time.sleep(3)
         print("Soda 2 served!")
         time.sleep(2)
-        self.reset()
 
     def serve_c3(self):
         print("Serving soda 3")
         time.sleep(3)
         print("Soda 3 served!")
         time.sleep(2)
-        self.reset()
-
-    def reset(self):
-        self.watch_current_data()
-        self.work(None)
