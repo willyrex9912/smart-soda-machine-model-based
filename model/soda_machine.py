@@ -72,31 +72,31 @@ class SodaMachine:
         print("Last Executed Action -> " + str(self.action))
 
     def ask_coin(self):
-        print("Please insert a coin!")
+        print("                                                     >>> Please insert a coin!")
         self.ask_and_wait_perception()
 
     def ask_soda_code(self):
-        print("Please choose a soda!")
+        print("                                                     >>> Please choose a soda!")
         self.ask_and_wait_perception()
 
     def serve_c1(self):
-        print("Serving soda 1")
+        print("                                                     >>> Serving soda 1")
         time.sleep(3)
-        print("Soda 1 served!")
+        print("                                                     >>> Soda 1 served!")
         time.sleep(2)
         self.reset()
 
     def serve_c2(self):
-        print("Serving soda 2")
+        print("                                                     >>> Serving soda 2")
         time.sleep(3)
-        print("Soda 2 served!")
+        print("                                                     >>> Soda 2 served!")
         time.sleep(2)
         self.reset()
 
     def serve_c3(self):
-        print("Serving soda 3")
+        print("                                                     >>> Serving soda 3")
         time.sleep(3)
-        print("Soda 3 served!")
+        print("                                                     >>> Soda 3 served!")
         time.sleep(2)
         self.reset()
 
