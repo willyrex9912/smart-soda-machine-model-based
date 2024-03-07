@@ -25,6 +25,12 @@ class SodaMachine:
             return StateEnum.COIN_RECEIVED
         if self.state == StateEnum.COIN_RECEIVED and self.action == ActionEnum.ASK_SODA_CODE and perception == PerceptionEnum.C1:
             return StateEnum.C1_SERVED
+        if self.state == StateEnum.COIN_RECEIVED and self.action == ActionEnum.ASK_SODA_CODE and perception == PerceptionEnum.C2:
+            return StateEnum.C2_SERVED
+        if self.state == StateEnum.COIN_RECEIVED and self.action == ActionEnum.ASK_SODA_CODE and perception == PerceptionEnum.C3:
+            return StateEnum.C3_SERVED
+        if self.state == StateEnum.COIN_RECEIVED and self.action == ActionEnum.ASK_SODA_CODE and perception == PerceptionEnum.COIN:
+            return StateEnum.COIN_RECEIVED
         else:
             return StateEnum.WITHOUT_COIN
 
@@ -54,13 +60,16 @@ class SodaMachine:
 
     def ask_and_wait_perception(self):
         try:
-            print("Current State        -> " + str(self.state))
-            print("Last Executed Action -> " + str(self.action))
+            self.watch_current_data()
             perception_number = input("(0) Insert coin\n(1) C1\n(2) C2\n(3) C3\nType perception: ")
             perception = PerceptionEnum(int(perception_number))
             self.work(perception)
         except ValueError:
             self.ask_and_wait_perception()
+
+    def watch_current_data(self):
+        print("Current State        -> " + str(self.state))
+        print("Last Executed Action -> " + str(self.action))
 
     def ask_coin(self):
         self.ask_and_wait_perception()
@@ -72,13 +81,23 @@ class SodaMachine:
         print("Serving soda 1")
         time.sleep(3)
         print("Soda 1 served!")
+        time.sleep(2)
+        self.reset()
 
     def serve_c2(self):
         print("Serving soda 2")
         time.sleep(3)
         print("Soda 2 served!")
+        time.sleep(2)
+        self.reset()
 
     def serve_c3(self):
         print("Serving soda 3")
         time.sleep(3)
         print("Soda 3 served!")
+        time.sleep(2)
+        self.reset()
+
+    def reset(self):
+        self.watch_current_data()
+        self.work(None)
